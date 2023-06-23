@@ -28,6 +28,14 @@ window.addEventListener("DOMContentLoaded", () => {
 //网页启动时自动运行程序
 window.onload = onload;
 
+async function renew(){
+  //获取列表信息
+  list_1.textContent = await invoke("get_list",{index:1});
+  list_2.textContent = await invoke("get_list",{index:2});
+  list_3.textContent = await invoke("get_list",{index:3});
+  list_4.textContent = await invoke("get_list",{index:4});
+  list_5.textContent = await invoke("get_list",{index:5});
+}
 
 async function greet() {
   // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
@@ -36,15 +44,11 @@ async function greet() {
 
 async function get_random_num(){
   random_num.textContent = await invoke("get_random_num");
+  renew();
 }
 
 async function onload(){
-  //获取列表信息
-  list_1.textContent = await invoke("get_list",{num:1});
-  list_2.textContent = await invoke("get_list",{num:2});
-  list_3.textContent = await invoke("get_list",{num:3});
-  list_4.textContent = await invoke("get_list",{num:4});
-  list_5.textContent = await invoke("get_list",{num:5});
+  renew();
 
 }
 

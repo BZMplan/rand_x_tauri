@@ -7,8 +7,8 @@
     "withGlobalTauri": true
   },
   "package": {
-    "productName": "chat-tauri",
-    "version": "0.0.0"
+    "productName": "randX-tauri",
+    "version": "0.0.1"
   },
   "tauri": {
     "allowlist": {
@@ -58,7 +58,7 @@
         "fullscreen": false,
         "height": 600,
         "resizable": true,
-        "title": "chat-tauri",
+        "title": "randX-tauri",
         "width": 800
       }
     ]

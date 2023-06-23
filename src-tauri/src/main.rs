@@ -1,9 +1,12 @@
-
 #![cfg_attr(
     all(not(debug_assertions), target_os = "windows"),
     windows_subsystem = "windows"
 )]
-use chat_tauri::list::studnet_list;
+use std::fs::File;
+use std::io::{BufReader, BufRead,Write};
+
+use chat_tauri::get_info::get_info;
+use chat_tauri::name::name;
 use rand::prelude::*;
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 #[tauri::command]
@@ -11,25 +14,62 @@ fn greet(name: &str) -> String {
     format!("Hello, {}! You've been greeted from Rust!", name)
 }
 #[tauri::command]
-fn get_random_num() -> i32{
-    let len_usize = studnet_list().len();
+fn get_random_num() -> i32 {
+    
+    let len_usize = name().len();
     let len = len_usize as i32;
     let mut rng = rand::thread_rng();
-    let random_num = rng.gen_range(0..len);
-    random_num
+    let random_num = rng.gen_range(0..len) as usize;
+    //let mut list = studnet_list();
+    let read_data = read_data_from_file("data/data.randx");
+    modify_line_in_file("data/data.randx", random_num.try_into().unwrap(),get_number(read_data,random_num)+1);
+
+    random_num as i32
 }
+
+fn modify_line_in_file(filename: &str, line_number: usize, new_data: i32) {
+    let mut lines = read_data_from_file(filename);
+    if line_number < lines.len() {
+        lines[line_number] = new_data.to_string();
+        write_data_to_file(filename, &lines);
+    } else {
+        println!("Line number out of range");
+    }
+}
+fn string_to_i32(string: &String) -> i32 {
+    string.parse().unwrap()
+}
+
+fn get_number(n:Vec<String>,m:usize) -> i32{
+    string_to_i32(&n[m])
+}
+
+fn read_data_from_file(filename: &str) -> Vec<String> {
+    let file = File::open(filename).expect("Failed to open file");
+    let reader = BufReader::new(file);
+    reader.lines().map(|line| line.expect("Failed to read line")).collect()
+}
+
+fn write_data_to_file(filename: &str, data: &[String]) {
+    let mut file = File::create(filename).expect("Failed to create file");
+    for line in data {
+        writeln!(file, "{}", line).expect("Failed to write to file");
+    }
+}
+
+
+
 #[tauri::command]
-fn get_list(num:i32) -> String{
-    let mut students = studnet_list();
-    students.sort();
-    let top_five = &students[(students.len() - 5)..];
-    let n = num as usize;
-    format!("Student Name,{}",top_five[5-n])
+fn get_list(index: usize) -> String {
+    let name = name();
+    let (count,position) =get_info(index-1);
+    format!("{}同学已被抽中{}次",name[position],count)
+
 }
 
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![greet,get_random_num,get_list])
+        .invoke_handler(tauri::generate_handler![greet, get_random_num, get_list])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

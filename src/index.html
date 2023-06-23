@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tauri App</title>
+    <script type="module" src="/main.js" defer></script>
+    <style>
+      .logo.vanilla:hover {
+        filter: drop-shadow(0 0 2em #ffe21c);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Welcome to randX Tauri Version!</h1>
+
+      <p id="p_info">This is an app which can draw student randomly</p>
+
+      <div class="row">
+        <!-- <div>
+          <input id="greet-input" placeholder="Enter a name..." />
+          <button type="button" onclick="greet()">Greet</button>
+        </div> -->
+        <div>
+          <button type="button" onclick="get_random_num()">
+            get_random_num
+          </button>
+        </div>
+      </div>
+      <div>
+        <p id="random_num"></p>
+      </div>
+    </div>
+  </body>
+  <div class="students_list">
+    <a style="font-size: x-large"
+      ><p id="student_list_title">student_list_title</p></a
+    >
+    <div>
+      <div id="list">
+        <ol>
+          <li id="list_1"></li>
+          <li id="list_2"></li>
+          <li id="list_3"></li>
+          <li id="list_4"></li>
+          <li id="list_5"></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</html>

@@ -2429,18 +2429,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "randX-tauri"
-version = "0.0.0"
-dependencies = [
- "bincode",
- "rand 0.8.5",
- "serde",
- "serde_json",
- "tauri",
- "tauri-build",
-]
-
-[[package]]
 name = "rand_chacha"
 version = "0.2.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2494,6 +2482,18 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "16abd0c1b639e9eb4d7c50c0b8100b0d0f849be2349829c740fe8e6eb4816429"
 dependencies = [
  "rand_core 0.5.1",
+]
+
+[[package]]
+name = "rand_x_tauri"
+version = "0.0.1"
+dependencies = [
+ "bincode",
+ "rand 0.8.5",
+ "serde",
+ "serde_json",
+ "tauri",
+ "tauri-build",
 ]
 
 [[package]]

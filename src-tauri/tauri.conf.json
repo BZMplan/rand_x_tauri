@@ -7,7 +7,7 @@
     "withGlobalTauri": true
   },
   "package": {
-    "productName": "randX-tauri",
+    "productName": "rand_x_tauri",
     "version": "0.0.1"
   },
   "tauri": {

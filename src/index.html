@@ -16,39 +16,34 @@
   <body>
     <div class="container">
       <h1>Welcome to randX Tauri Version!</h1>
-
       <p id="p_info">This is an app which can draw student randomly</p>
 
-      <div class="row">
-        <!-- <div>
-          <input id="greet-input" placeholder="Enter a name..." />
-          <button type="button" onclick="greet()">Greet</button>
-        </div> -->
-        <div>
-          <button type="button" onclick="get_random_num()">
-            get_random_num
-          </button>
-        </div>
-      </div>
       <div>
         <p id="random_num"></p>
       </div>
     </div>
   </body>
-  <div class="students_list">
-    <a style="font-size: x-large"
-      ><p id="student_list_title">student_list_title</p></a
-    >
-    <div>
-      <div id="list">
-        <ol>
-          <li id="list_1"></li>
-          <li id="list_2"></li>
-          <li id="list_3"></li>
-          <li id="list_4"></li>
-          <li id="list_5"></li>
-        </ol>
-      </div>
+  <div class="list">
+    <a style="font-size: x-large"><p class="student_list_title">排行榜</p></a>
+    <p id="list_1"></li>  
+    <p id="list_2"></li>
+    <p id="list_3"></li>
+    <p id="list_4"></li>
+    <p id="list_5"></li>  
+  </div>
+  <div class="row">
+    <!-- <div>
+      <input id="greet-input" placeholder="Enter a name..." />
+      <button type="button" onclick="greet()">Greet</button>
+    </div> -->
+    <div class="get_random_student_button">
+      <button
+        type="button"
+        onclick="get_random_num()"
+        class="get_random_student"
+      >
+        抽取学生
+      </button>
     </div>
   </div>
 </html>

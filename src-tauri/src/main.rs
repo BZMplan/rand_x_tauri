@@ -5,26 +5,27 @@
 use std::fs::File;
 use std::io::{BufReader, BufRead,Write};
 
-use chat_tauri::get_info::get_info;
-use chat_tauri::name::name;
+use rand_x_tauri::get_info::get_info;
+use rand_x_tauri::name::name;
 use rand::prelude::*;
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 #[tauri::command]
 fn greet(name: &str) -> String {
     format!("Hello, {}! You've been greeted from Rust!", name)
-}
+}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
 #[tauri::command]
-fn get_random_num() -> i32 {
-    
+fn get_random_num() -> String {
     let len_usize = name().len();
+    let name =name();
     let len = len_usize as i32;
     let mut rng = rand::thread_rng();
     let random_num = rng.gen_range(0..len) as usize;
     //let mut list = studnet_list();
     let read_data = read_data_from_file("data/data.randx");
     modify_line_in_file("data/data.randx", random_num.try_into().unwrap(),get_number(read_data,random_num)+1);
-
-    random_num as i32
+    let student = name[random_num];
+    format!("恭喜{}同学",student.to_string())
+    
 }
 
 fn modify_line_in_file(filename: &str, line_number: usize, new_data: i32) {

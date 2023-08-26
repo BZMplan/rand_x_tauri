@@ -61,16 +61,35 @@ fn write_data_to_file(filename: &str, data: &[String]) {
 
 
 #[tauri::command]
-fn get_list(index: usize) -> String {
-    let name = name();
-    let (count,position) =get_info(index-1);
-    format!("{}同学已被抽中{}次",name[position],count)
+//列表
+// fn get_list(index: usize) -> String {
+//     let name = name();
+//     let (count,position) =get_info(index-1);
+//     format!("{}同学已被抽中{}次",name[position],count)
+// }
 
+//条形统计图
+fn get_list(index:usize) -> (String,i32){
+    let name = name();
+    let (count,position) = get_info(index-1);
+    (name[position].to_string(),count)
 }
+#[tauri::command]
+fn get_count(index:usize) -> i32{
+    let (count,_) = get_info(index-1);
+    count
+}
+#[tauri::command]
+fn get_name(index:usize) -> String{
+    let name = name();
+    let (_,position) = get_info(index-1);
+    name[position].to_string()
+}
+
 
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![greet, get_random_num, get_list])
+        .invoke_handler(tauri::generate_handler![greet, get_random_num, get_list,get_count,get_name])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

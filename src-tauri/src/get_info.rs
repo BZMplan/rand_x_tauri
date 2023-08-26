@@ -19,7 +19,7 @@ pub fn get_info(index: usize) -> (i32, usize){
     // 找到最大的五个数及其位置
     let mut max_values: Vec<(i32, usize)> = Vec::new();
     for (i, &num) in data.iter().enumerate() {
-        if max_values.len() < 5 {
+        if max_values.len() < 10 {
             max_values.push((num, i));
         } else {
             let min_index = max_values.iter().enumerate().min_by_key(|&(_, &(value, _))| value).unwrap().0;

@@ -22,7 +22,9 @@
   justify-content: center;
   text-align: center;
 }
-
+.container #random_num{
+  font-size: x-large;
+}
 .logo {
   height: 6em;
   padding: 1.5em;

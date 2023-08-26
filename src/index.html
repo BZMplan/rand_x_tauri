@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tauri App</title>
     <script type="module" src="/main.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
       .logo.vanilla:hover {
         filter: drop-shadow(0 0 2em #ffe21c);
@@ -15,22 +16,30 @@
 
   <body>
     <div class="container">
-      <h1>Welcome to randX Tauri Version!</h1>
-      <p id="p_info">This is an app which can draw student randomly</p>
+      <h1>广德中学高三18班专用点名程序</h1>
+      <!-- <p id="p_info">This is an app which can draw student randomly</p> -->
 
       <div>
-        <p id="random_num"></p>
+        <p id="random_num">虚位以待</p>
       </div>
     </div>
   </body>
-  <div class="list">
+
+  <!-- 列表 -->
+  <!-- <div class="list">
     <a style="font-size: x-large"><p class="student_list_title">排行榜</p></a>
     <p id="list_1"></li>  
     <p id="list_2"></li>
     <p id="list_3"></li>
     <p id="list_4"></li>
     <p id="list_5"></li>  
+  </div> -->
+
+  <!-- 条形统计图 -->
+  <div>
+    <canvas id="students_chart"> </canvas>
   </div>
+
   <div class="row">
     <!-- <div>
       <input id="greet-input" placeholder="Enter a name..." />

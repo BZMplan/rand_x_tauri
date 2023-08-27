@@ -2,57 +2,74 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+
     <link rel="stylesheet" href="style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tauri App</title>
+    <title>点名程序</title>
+
     <script type="module" src="/main.js" defer></script>
+
+    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-      .logo.vanilla:hover {
-        filter: drop-shadow(0 0 2em #ffe21c);
-      }
-    </style>
+
+    <!-- MDUI CSS -->
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css"
+      integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw"
+      crossorigin="anonymous"
+    /> -->
+
+    <!-- MDUI JavaScript -->
+    <!-- <script
+      src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js"
+      integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A"
+      crossorigin="anonymous"
+    ></script> -->
+
+    <!-- Tailwindcss -->
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
-  <body>
-    <div class="container">
-      <h1>广德中学高三18班专用点名程序</h1>
-      <!-- <p id="p_info">This is an app which can draw student randomly</p> -->
+  <body class="">
+    <div class="grid justify-items-center pointer-events-none text">
+      <div class="my-8 text-4xl">
+        <p class="subpixel-antialiased font-semibold">
+          广德中学高三18班专用点名程序
+        </p>
+      </div>
+      <div class="my-4">
+        <p id="random_num" class="subpixel-antialiased text-2xl">虚位以待</p>
+      </div>
+    </div>
 
-      <div>
-        <p id="random_num">虚位以待</p>
+    <!-- 条形统计图 -->
+    <div>
+      <canvas id="students_chart"> </canvas>
+    </div>
+
+
+    <div class="grid justify-items-center mt-4">
+      <div class="">
+        <button
+          type="button"
+          onclick="get_random_num()"
+          class="box-border h-50 w-30 p-7 rounded-3xl shadow-lg shadow-indigo-300/100 get_student_button"
+        >
+          抽取学生
+        </button>
       </div>
     </div>
   </body>
-
-  <!-- 列表 -->
-  <!-- <div class="list">
-    <a style="font-size: x-large"><p class="student_list_title">排行榜</p></a>
-    <p id="list_1"></li>  
-    <p id="list_2"></li>
-    <p id="list_3"></li>
-    <p id="list_4"></li>
-    <p id="list_5"></li>  
-  </div> -->
-
-  <!-- 条形统计图 -->
-  <div>
-    <canvas id="students_chart"> </canvas>
-  </div>
-
-  <div class="row">
-    <!-- <div>
-      <input id="greet-input" placeholder="Enter a name..." />
-      <button type="button" onclick="greet()">Greet</button>
-    </div> -->
-    <div class="get_random_student_button">
-      <button
-        type="button"
-        onclick="get_random_num()"
-        class="get_random_student"
-      >
-        抽取学生
-      </button>
-    </div>
-  </div>
+  <style>
+    body{
+      background-color: rgb(236, 233, 236);
+    }
+    .text{
+      color :black
+    }
+    .get_student_button{
+      background:white;
+    }
+  </style>
 </html>

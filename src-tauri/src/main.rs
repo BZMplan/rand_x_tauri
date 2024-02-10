@@ -4,15 +4,12 @@
 )]
 use std::fs::File;
 use std::io::{BufReader, BufRead,Write};
-
 use rand_x_tauri::get_info::get_info;
 use rand_x_tauri::name::name;
 use rand::prelude::*;
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-#[tauri::command]
-fn greet(name: &str) -> String {
-    format!("Hello, {}! You've been greeted from Rust!", name)
-}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+
+
 #[tauri::command]
 fn get_random_num() -> String {
     let len_usize = name().len();
@@ -89,7 +86,7 @@ fn get_name(index:usize) -> String{
 
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![greet, get_random_num, get_list,get_count,get_name])
+        .invoke_handler(tauri::generate_handler![get_random_num, get_list,get_count,get_name])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
